@@ -19,6 +19,8 @@ $cellphone = $_POST['cellphone'];
 $dob = $_POST["dob"];
 $type = $_POST["type"];
 
+//sandile
+
 
 $create_user = $groovapp->create_user_g($name,$surname,$password,$cellphone,$email,$dob,$type);
 
