@@ -1,0 +1,37 @@
+[09-Sep-2015 09:04:02 UTC] PHP Fatal error:  Call to undefined method GroveApp::users() in /home/msentivw/public_html/groovapp/index.php on line 11
+[10-Sep-2015 15:48:09 UTC] PHP Fatal error:  Call to undefined method GroveApp::users() in /home/msentivw/public_html/groovapp/index.php on line 11
+[11-Sep-2015 08:19:37 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/msentivw/public_html/groovapp/functions/GroveApp.php on line 56
+[15-Sep-2015 11:43:43 UTC] PHP Warning:  mysqli_stmt_bind_param() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 15
+[15-Sep-2015 11:43:43 UTC] PHP Warning:  mysqli_stmt_execute() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 16
+[15-Sep-2015 11:43:43 UTC] PHP Warning:  mysqli_stmt_close() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 18
+[15-Sep-2015 11:50:25 UTC] PHP Warning:  mysqli_stmt_bind_param() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 15
+[15-Sep-2015 11:50:25 UTC] PHP Warning:  mysqli_stmt_execute() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 16
+[15-Sep-2015 11:50:25 UTC] PHP Warning:  mysqli_stmt_close() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 18
+[15-Sep-2015 11:53:49 UTC] PHP Warning:  mysqli_stmt_bind_param() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 15
+[15-Sep-2015 11:53:49 UTC] PHP Warning:  mysqli_stmt_execute() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 16
+[15-Sep-2015 11:53:49 UTC] PHP Warning:  mysqli_stmt_close() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 18
+[15-Sep-2015 11:57:33 UTC] PHP Warning:  mysqli_stmt_bind_param() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 15
+[15-Sep-2015 11:57:33 UTC] PHP Warning:  mysqli_stmt_execute() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 16
+[15-Sep-2015 11:57:33 UTC] PHP Warning:  mysqli_stmt_close() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 18
+[15-Sep-2015 12:18:00 UTC] PHP Warning:  mysqli_stmt_bind_param() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 15
+[15-Sep-2015 12:18:00 UTC] PHP Warning:  mysqli_stmt_execute() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 16
+[15-Sep-2015 12:18:00 UTC] PHP Warning:  mysqli_stmt_close() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 18
+[15-Sep-2015 12:25:06 UTC] PHP Warning:  mysqli_stmt_bind_param() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 15
+[15-Sep-2015 12:25:06 UTC] PHP Warning:  mysqli_stmt_execute() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 16
+[15-Sep-2015 12:25:06 UTC] PHP Warning:  mysqli_stmt_close() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 18
+[15-Sep-2015 12:27:23 UTC] PHP Warning:  mysqli_stmt_bind_param() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 15
+[15-Sep-2015 12:27:23 UTC] PHP Warning:  mysqli_stmt_execute() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 16
+[15-Sep-2015 12:27:23 UTC] PHP Warning:  mysqli_stmt_close() expects parameter 1 to be mysqli_stmt, boolean given in /home/msentivw/public_html/groovapp/Register.php on line 18
+[15-Sep-2015 12:34:34 UTC] PHP Fatal error:  Only variables can be passed by reference in /home/msentivw/public_html/groovapp/Register.php on line 15
+[15-Sep-2015 13:28:01 UTC] PHP Fatal error:  Call to undefined method GroveApp::users() in /home/msentivw/public_html/groovapp/index.php on line 11
+[16-Sep-2015 11:40:02 UTC] PHP Parse error:  syntax error, unexpected '$username' (T_VARIABLE) in /home/msentivw/public_html/groovapp/create_user.php on line 22
+[16-Sep-2015 11:41:19 UTC] PHP Parse error:  syntax error, unexpected '$username' (T_VARIABLE) in /home/msentivw/public_html/groovapp/create_user.php on line 22
+[16-Sep-2015 12:28:30 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/msentivw/public_html/groovapp/functions/GroveApp.php on line 48
+[16-Sep-2015 12:28:46 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/msentivw/public_html/groovapp/functions/GroveApp.php on line 48
+[17-Sep-2015 08:34:49 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/msentivw/public_html/groovapp/functions/GroveApp.php on line 76
+[17-Sep-2015 08:34:53 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/msentivw/public_html/groovapp/functions/GroveApp.php on line 76
+[17-Sep-2015 08:35:07 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/msentivw/public_html/groovapp/functions/GroveApp.php on line 76
+[17-Sep-2015 08:35:11 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/msentivw/public_html/groovapp/functions/GroveApp.php on line 76
+[30-Sep-2015 08:22:34 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/msentivw/public_html/groovapp/functions/GroveApp.php on line 106
+[30-Sep-2015 08:23:39 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/msentivw/public_html/groovapp/functions/GroveApp.php on line 106
+[30-Sep-2015 08:24:01 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/msentivw/public_html/groovapp/functions/GroveApp.php on line 106
