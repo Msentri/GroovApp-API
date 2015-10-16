@@ -16,6 +16,7 @@ class GroveApp extends DatabaseManipulation{
     public function __construct() {
         parent::__construct();  
     }
+    //sandile
     
         public function create_user($name, $surname, $id_number,$email,$cellphone ,$username,$password){
 
