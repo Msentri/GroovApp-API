@@ -16,52 +16,21 @@ class GroveApp extends DatabaseManipulation{
     public function __construct() {
         parent::__construct();  
     }
-    //sandile
-    
-        public function create_user($name, $surname, $id_number,$email,$cellphone ,$username,$password){
 
-                $tableName = "Users";
-                $columns = "id,name,surname,id_number,email,cellphone,username,password";
-                $values = "'null','$name','$surname','$id_number','$email','$cellphone','$username','$password'";
+    public function Register_user($user_name,$user_surname,$user_picture,$user_password,
+                                  $user_cell_phone,$user_email,
+                                  $user_dob,$user_membership_type){
+        $USER_ID = "null";
+        $USER_STATUS = 0;
+        $USER_REGISTERED_DATE = parent::getDateBasic();
 
-
-                $create = parent::insert($tableName, $columns, $values);
-
-                // check if row inserted or not
-		    if ($create) {
-		        // successfully inserted into database
-		        $response["success"] = 1;
-		        $response["message"] = "Product successfully created.";
-		 
-		        // echoing JSON response
-		        echo json_encode($response);
-		    } else {
-		        // failed to insert row
-		        $response["success"] = 0;
-		        $response["message"] = "Oops! An error occurred.";
-		 
-		        // echoing JSON response
-		        echo json_encode($response);}
-
-
-        }
-
-    public function create_user_g($user_first_name,$user_surname,$user_password,
-                                  $user_cell_phone,$user_email,$user_dob,$user_membership_type){
-        $USER_ID  = "null";
-        $status = 0;
-        $user_picture = "N/A";
-
-        $user_registered = parent::getDateBasic();
-
-
-        $tableName = "groovapp_user";
-        $columns = "user_id,user_first_name,user_surname,user_picture,user_registered,user_password,user_cell_phone,
-        user_email,user_dob,user_membership_type,status";
-
-
-        $values = "'$USER_ID','$user_first_name','$user_surname','$user_picture','$user_registered','$user_password','$user_cell_phone',
-        '$user_email','$user_dob',$user_membership_type,'$status'";
+        $tableName = "tbl_user";
+        $columns = "user_id,user_first_name,user_surname,user_picture,user_registered,
+        user_password,user_cell_phone,user_email,user_dob,user_membership_type,status";
+        $values = "'$USER_ID','$user_name','$user_surname','$user_picture',
+        '$USER_REGISTERED_DATE','$user_password',
+        '$user_cell_phone','$user_email',
+        '$user_dob','$user_membership_type','$USER_STATUS'";
 
         $create = parent::insert($tableName, $columns, $values);
 
@@ -83,50 +52,47 @@ class GroveApp extends DatabaseManipulation{
         }
 
 
+
+
+
     }
+    public function Get_user($email,$password){
+        $tableName = "tbl_user";
+        $columns = "*";
+        $condition = "user_email='$email' AND user_password='$password'";
 
-        public function get_user($username){
+        $result = parent::select($tableName, $columns, $condition);
 
-            
-            $tableName = "Users";
-            $columns = "*";
-            $condition = "username='$username'";
-            
-            $result = parent::select($tableName, $columns, $condition);
-            
-            if (!empty($result)) {
-                // check for empty result
-                if (mysql_num_rows($result) > 0) {
+        if (!empty($result)) {
+            // check for empty result
+            if (mysql_num_rows($result) > 0) {
 
-                    $result = mysql_fetch_array($result);
+                $result = mysql_fetch_array($result);
 
-                    $product = array();
-                    $product["user_id"] = $result["id"];
-                    $product["name"] = $result["name"];
-                    $product["surname"] = $result["surname"];
-                    $product["email"] = $result["email"];
-                    $product["id_number"] = $result["id_number"];
-                    $product["cellphone"] = $result["cellphone"];
-                    $product["username"] = $result["username"];
-                    $product["password"] = $result["password"];
-                    // success
-                    $response["success"] = 1;
+                $user = array();
+                $user["user_id"] = $result["user_id"];
+                $user["user_first_name"] = $result["user_first_name"];
+                $user["user_surname"] = $result["user_surname"];
+                $user["user_picture"] = $result["user_picture"];
+                $user["user_registered"] = $result["user_registered"];
+                $user["user_modified"] = $result["user_modified"];
+                $user["user_password"] = $result["user_password"];
+                $user["user_cell_phone"] = $result["user_cell_phone"];
+                $user["user_email"] = $result["user_email"];
+                $user["user_dob"] = $result["user_dob"];
+                $user["user_membership_type"] = $result["user_membership_type"];
+                $user["status"] = $result["status"];
 
-                    // user node
-                    $response["user"] = array();
+                // success
+                $response["success"] = 1;
 
-                    array_push($response["user"], $product);
+                // user node
+                $response["user"] = array();
 
-                    // echoing JSON response
-                    echo json_encode($response);
-                } else {
-                    // no product found
-                    $response["success"] = 0;
-                    $response["message"] = "No user found";
+                array_push($response["user"], $user);
 
-                    // echo no users JSON
-                    echo json_encode($response);
-                }
+                // echoing JSON response
+                echo json_encode($response);
             } else {
                 // no product found
                 $response["success"] = 0;
@@ -135,11 +101,18 @@ class GroveApp extends DatabaseManipulation{
                 // echo no users JSON
                 echo json_encode($response);
             }
-            
- 
+        } else {
+            // no product found
+            $response["success"] = 0;
+            $response["message"] = "No user found";
+
+            // echo no users JSON
+            echo json_encode($response);
+        }
+
     }
 
-        public function get_All_user(){
+    public function get_All_user(){
         
         $tableName = "Users";
         $columns = "*";
@@ -191,7 +164,7 @@ class GroveApp extends DatabaseManipulation{
         $date_added = parent::getDateBasic();
 
 
-        $tableName = "groovapp_creadit_card";
+        $tableName = "tbl_credit_card";
         $columns = "id,user_id,pan,cvv,date_expiry,date_added,card_holder";
         $values = "'null','$user_id','$pan','$ccv','$year','$date_added','$card_holder_name'";
         $add_credit_card_details = parent::insert($tableName,$columns,$values);
@@ -206,4 +179,81 @@ class GroveApp extends DatabaseManipulation{
         }
 
     }
+
+    public function Activate_user($user_id){
+
+        $tableName = "tbl_user";
+        $columns = "status='1'";
+        $condition = "user_id='$user_id'";
+
+
+        $actvate_user = parent::update($tableName,$columns,$condition);
+
+        if ($actvate_user) {
+            // successfully inserted into database
+            $response["success"] = 1;
+            $response["message"] = "Users successfully Activated.";
+
+            // echoing JSON response
+            echo json_encode($response);
+        } else {
+            // failed to insert row
+            $response["success"] = 0;
+            $response["message"] = "Users successfully not Activated.";
+
+            // echoing JSON response
+            echo json_encode($response);
+        }
+
+
+    }
+
+    public function upload_image(){
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        // Check if image file is a actual image or fake image
+        if(isset($_POST["submit"])) {
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if($check !== false) {
+                echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                echo "File is not an image.";
+                $uploadOk = 0;
+            }
+        }
+        // Check if file already exists
+        if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+        // Check file size
+        if ($_FILES["fileToUpload"]["size"] > 500000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        }
+
+    }
+
+
+
 }

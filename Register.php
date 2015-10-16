@@ -6,21 +6,16 @@ include './functions/GroveApp.php';
 
 $groovapp = new GroveApp();
 
+$user_name = $_POST['name'];
+$user_surname = $_POST['surname'];
+$user_picture = "images";
+$user_password = $_POST['password'];
+$user_cell_phone = $_POST['cell'];
+$user_email = $_POST['email'];
+$user_dob = $_POST['dob'];
+$user_membership_type = $_POST['member_type'];
 
-
-
-
-$name = $_POST['name'];
-$surname = $_POST['surname'];
-$id_number = $_POST['id'];
-$password = $_POST['password'];
-$email = $_POST['email'];
-$cellphone = $_POST['cellphone'];
-$dob = $_POST["dob"];
-$type = $_POST["type"];
-
-//sandile
-
-
-$create_user = $groovapp->create_user_g($name,$surname,$password,$cellphone,$email,$dob,$type);
+$groovapp->Register_user($user_name,$user_surname,$user_picture,$user_password,
+    $user_cell_phone,$user_email,
+    $user_dob,$user_membership_type);
 
