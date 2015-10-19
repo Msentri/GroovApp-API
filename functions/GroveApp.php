@@ -32,24 +32,33 @@ class GroveApp extends DatabaseManipulation{
         '$user_cell_phone','$user_email',
         '$user_dob','$user_membership_type','$USER_STATUS'";
 
-        $create = parent::insert($tableName, $columns, $values);
-
-        // check if row inserted or not
-        if ($create) {
-            // successfully inserted into database
-            $response["success"] = 1;
-            $response["message"] = "Users successfully created.";
-
-            // echoing JSON response
-            echo json_encode($response);
-        } else {
-            // failed to insert row
+        if($this->check_email_exit($user_email) == false){
             $response["success"] = 0;
-            $response["message"] = "Oops! An error occurred.";
+            $response["message"] = "Email Address taken already";
 
-            // echoing JSON response
             echo json_encode($response);
+        }else{
+            $create = parent::insert($tableName, $columns, $values);
+
+            // check if row inserted or not
+            if ($create) {
+                // successfully inserted into database
+                $response["success"] = 1;
+                $response["message"] = "Users successfully created.";
+
+                // echoing JSON response
+                echo json_encode($response);
+            } else {
+                // failed to insert row
+                $response["success"] = 0;
+                $response["message"] = "Oops! An error occurred.";
+
+                // echoing JSON response
+                echo json_encode($response);
+            }
         }
+
+
 
 
 
@@ -251,6 +260,20 @@ class GroveApp extends DatabaseManipulation{
                 echo "Sorry, there was an error uploading your file.";
             }
         }
+
+    }
+
+    public function check_email_exit($email){
+        $tableName = "tbl_user";
+        $columns = "*";
+        $condition = "user_email='$email'";
+
+        $result = parent::select($tableName, $columns, $condition);
+
+        if(mysql_num_rows($result) > 0)
+            return false;
+        else
+            return true;
 
     }
 
