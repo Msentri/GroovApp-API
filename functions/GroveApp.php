@@ -280,20 +280,38 @@ class GroveApp extends DatabaseManipulation{
     public function select_last_user(){
 
         $tableName = "tbl_user";
-        $columns = null;
-        $condition = "*";
-        $db = "codistco_groovapp";
+        $columns = "*";
+        $condition = null;
         $Limit = 1;
-
+        $db = DB_NAME;
 
         $results = parent::select_limit($tableName,$columns,$condition,$db, $Limit);
 
-        $row =  mysql_fetch_array($results);
+        $result =  mysql_fetch_array($results);
 
 
+        $user = array();
+        $user["user_id"] = $result["user_id"];
+        $user["user_first_name"] = $result["user_first_name"];
+        $user["user_surname"] = $result["user_surname"];
+        $user["user_picture"] = $result["user_picture"];
+        $user["user_registered"] = $result["user_registered"];
+        $user["user_modified"] = $result["user_modified"];
+        $user["user_password"] = $result["user_password"];
+        $user["user_cell_phone"] = $result["user_cell_phone"];
+        $user["user_email"] = $result["user_email"];
+        $user["user_dob"] = $result["user_dob"];
+        $user["user_membership_type"] = $result["user_membership_type"];
+        $user["status"] = $result["status"];
 
+        // success
         $response["success"] = 1;
-        $response["user_id"] = $row['user_id'];
+
+        // user node
+        $response["user"] = array();
+
+        array_push($response["user"], $user);
+
 
         // echoing JSON response
         echo json_encode($response);
