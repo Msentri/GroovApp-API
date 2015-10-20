@@ -277,6 +277,28 @@ class GroveApp extends DatabaseManipulation{
 
     }
 
+    public function select_last_user(){
+
+        $tableName = "tbl_user";
+        $columns = null;
+        $condition = "*";
+        $db = "codistco_groovapp";
+        $Limit = 1;
+
+
+        $results = parent::select_limit($tableName,$columns,$condition,$db, $Limit);
+
+        $row =  mysql_fetch_array($results);
+
+
+
+        $response["success"] = 1;
+        $response["user_id"] = $row['user_id'];
+
+        // echoing JSON response
+        echo json_encode($response);
+    }
+
 
 
 }

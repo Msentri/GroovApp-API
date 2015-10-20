@@ -13,7 +13,7 @@ $email = $_POST["email"];
 
 $to = $email;
 $subject = "GroovApp Register";
-$txt = "Hi $name $surname Thanks for Registering with GroovApp";
+$txt = "Hi $name $surname Thanks for Registering with GroovApp ";
 $headers = "From: info@groovapp.com";
 
 mail($to,$subject,$txt,$headers);

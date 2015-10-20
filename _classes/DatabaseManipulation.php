@@ -37,6 +37,7 @@ class DatabaseManipulation extends Clock
         $results = mysql_query($sql)or die("ERROR ".mysql_error());
         return $results;
     }
+
      function select_limit($tableName,$columns,$condition,$db, $Limit)
     {
         $sql = "SELECT ". $columns ." FROM ". $tableName." LIMIT ".$Limit;
