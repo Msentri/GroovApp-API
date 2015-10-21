@@ -287,34 +287,92 @@ class GroveApp extends DatabaseManipulation{
 
         $results = parent::select_limit($tableName,$columns,$condition,$db, $Limit);
 
-        $result =  mysql_fetch_array($results);
+        if (mysql_num_rows($results) > 0) {
+
+            $result = mysql_fetch_array($results);
 
 
-        $user = array();
-        $user["user_id"] = $result["user_id"];
-        $user["user_first_name"] = $result["user_first_name"];
-        $user["user_surname"] = $result["user_surname"];
-        $user["user_picture"] = $result["user_picture"];
-        $user["user_registered"] = $result["user_registered"];
-        $user["user_modified"] = $result["user_modified"];
-        $user["user_password"] = $result["user_password"];
-        $user["user_cell_phone"] = $result["user_cell_phone"];
-        $user["user_email"] = $result["user_email"];
-        $user["user_dob"] = $result["user_dob"];
-        $user["user_membership_type"] = $result["user_membership_type"];
-        $user["status"] = $result["status"];
+            $user = array();
+            $user["user_id"] = $result["user_id"];
+            $user["user_first_name"] = $result["user_first_name"];
+            $user["user_surname"] = $result["user_surname"];
+            $user["user_picture"] = $result["user_picture"];
+            $user["user_registered"] = $result["user_registered"];
+            $user["user_modified"] = $result["user_modified"];
+            $user["user_password"] = $result["user_password"];
+            $user["user_cell_phone"] = $result["user_cell_phone"];
+            $user["user_email"] = $result["user_email"];
+            $user["user_dob"] = $result["user_dob"];
+            $user["user_membership_type"] = $result["user_membership_type"];
+            $user["status"] = $result["status"];
 
-        // success
-        $response["success"] = 1;
+            // success
+            $response["success"] = 1;
 
-        // user node
-        $response["user"] = array();
+            // user node
+            $response["user"] = array();
 
-        array_push($response["user"], $user);
+            array_push($response["user"], $user);
 
 
-        // echoing JSON response
-        echo json_encode($response);
+            // echoing JSON response
+            echo json_encode($response);
+        }else{
+            // no products found
+            $response["success"] = 0;
+            $response["message"] = "No Records found";
+
+            // echo no users JSON
+            echo json_encode($response);
+        }
+    }
+
+    public function get_restaurants_places(){
+
+        $tableName = "tbl_places";
+        $columns = "*";
+        $condition = null;
+
+        $results = parent::select($tableName,$columns,$condition);
+
+        // check for empty result
+        if (mysql_num_rows($results) > 0) {
+            // looping through all results
+            // products node
+            $response["places"] = array();
+
+            while ($row = mysql_fetch_array($results)) {
+                // temp user array
+                $place = array();
+                $place["id"] = $row["id"];
+                $place["restaurant_name"] = $row["name"];
+                $place["latitude"] = $row["latitude"];
+                $place["longitude"] = $row["longitude"];
+                $place["type"] = $row["type"];
+                $place["date_added"] = $row["added"];
+                $place["date_modified"] = $row["modified"];
+                $place["contact"] = $row["contact"];
+                $place["street"] = $row["street"];
+                $place["city"] = $row["city"];
+                $place["province"] = $row["province"];
+                $place["code"] = $row["code"];
+
+                // push single product into final response array
+                array_push($response["places"], $place);
+            }
+            // success
+            $response["success"] = 1;
+
+            // echoing JSON response
+            echo json_encode($response);
+        } else {
+            // no products found
+            $response["success"] = 0;
+            $response["message"] = "No place found";
+
+            // echo no users JSON
+            echo json_encode($response);
+        }
     }
 
 
