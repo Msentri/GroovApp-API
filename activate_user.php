@@ -6,4 +6,6 @@ include './functions/GroveApp.php';
 
 $groovapp = new GroveApp();
 
-$groovapp->Activate_user("4");
+
+$user_id = $_GET["user_id"];
+$groovapp->Activate_user($user_id);

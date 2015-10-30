@@ -38,15 +38,16 @@ class DatabaseManipulation extends Clock
         return $results;
     }
 
-     function select_limit($tableName,$columns,$condition,$db, $Limit)
+     function select_limit()
     {
-        $sql = "SELECT ". $columns ." FROM ". $tableName." LIMIT ".$Limit;
+        $sql = "Select user_id,user_first_name,user_surname from tbl_user order by user_id desc limit 1";
+
+
+
+
         
-        if($condition != NULL || !empty($condition))
-        {
-            $sql.= " WHERE ".$condition." LIMIT ".$Limit;
-        }
-        mysql_select_db($db,mysql_connect($this->_DATABASE_SERVER,  $this->_DATABASE_USERNAME,  $this->_DATABASE_PASSWORD));
+
+        mysql_select_db(DB_NAME,mysql_connect($this->_DATABASE_SERVER,  $this->_DATABASE_USERNAME,  $this->_DATABASE_PASSWORD));
         $results = mysql_query($sql)or die("ERROR ".mysql_error());
         return $results;
     }
