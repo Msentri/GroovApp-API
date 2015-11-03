@@ -6,6 +6,6 @@ include './functions/GroveApp.php';
 
 $groovapp = new GroveApp();
 
-$id = $_GET['id'];
+$id = $_POST['id'];
 
 $groovapp->get_restaurants_places_by_id($id);
