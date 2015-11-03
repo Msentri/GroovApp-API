@@ -405,6 +405,7 @@ class GroveApp extends DatabaseManipulation{
                 $place["province"] = $row["province"];
                 $place["code"] = $row["code"];
                 $place["intro"] = $row["intro"];
+                $place["image"] = $row["image"];
 
 
                 // push single product into final response array
