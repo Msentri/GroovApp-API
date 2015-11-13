@@ -426,6 +426,48 @@ class GroveApp extends DatabaseManipulation{
         }
     }
 
+    public function get_all_place_type(){
+        $tableName = "place_type";
+        $columns = "*";
+        $condition = null;
+
+        $results = parent::select($tableName,$columns,$condition);
+
+        if(mysql_num_rows($results) > 0){
+
+            $response["place_type"] = array();
+
+            while ($row = mysql_fetch_array($results)) {
+                // temp user array
+                $place = array();
+                $place["id"] = $row["id"];
+                $place["name"] = $row["name"];
+                $place["added"] = $row["added"];
+                $place["modified"] = $row["modified"];
+
+
+                // push single product into final response array
+                array_push($response["place_type"], $place);
+            }
+
+            // success
+            $response["success"] = 1;
+
+            // echoing JSON response
+            echo json_encode($response);
+
+        }else{
+            // no products found
+            $response["success"] = 0;
+            $response["message"] = "No place type found";
+
+            // echo no users JSON
+            echo json_encode($response);
+        }
+
+
+    }
+
 
 
 }
