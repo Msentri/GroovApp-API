@@ -327,11 +327,11 @@ class GroveApp extends DatabaseManipulation{
         }
     }
 
-    public function get_restaurants_places(){
+    public function get_restaurants_places($condition){
 
         $tableName = "tbl_places";
         $columns = "*";
-        $condition = null;
+        //$condition = "type='$type'";
 
         $results = parent::select($tableName,$columns,$condition);
 
@@ -444,6 +444,7 @@ class GroveApp extends DatabaseManipulation{
                 $place["name"] = $row["name"];
                 $place["added"] = $row["added"];
                 $place["modified"] = $row["modified"];
+                $place["place_type_id"] = $row['type'];
 
 
                 // push single product into final response array
