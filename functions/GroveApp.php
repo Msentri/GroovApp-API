@@ -470,6 +470,7 @@ class GroveApp extends DatabaseManipulation{
     }
 
     public function get_event(){
+        $name = "sandile";
         $tableName = "tbl_place_events";
         $columns = "*";
         $condition = null;
@@ -509,7 +510,9 @@ class GroveApp extends DatabaseManipulation{
 
             // echo no users JSON
             echo json_encode($response);
+
         }
+
     }
 
 
