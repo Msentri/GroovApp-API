@@ -469,6 +469,49 @@ class GroveApp extends DatabaseManipulation{
 
     }
 
+    public function get_event(){
+        $tableName = "tbl_place_events";
+        $columns = "*";
+        $condition = null;
+
+        $results = parent::select($tableName,$columns,$condition);
+
+        if(mysql_num_rows($results) > 0){
+
+            $response["event"] = array();
+
+            while ($row = mysql_fetch_array($results)) {
+                // temp user array
+                $place = array();
+                $place["id"] = $row["ID"];
+                $place["place_id"] = $row["place_id"];
+                $place["event_description"] = $row["event_description"];
+                $place["event_banner_url"] = $row["event_banner_url"];
+                $place["start_date"] = $row["start_date"];
+                $place["end_date"] = $row["end_date"];
+
+
+
+                // push single product into final response array
+                array_push($response["event"], $place);
+            }
+
+            // success
+            $response["success"] = 1;
+
+            // echoing JSON response
+            echo json_encode($response);
+
+        }else{
+            // no products found
+            $response["success"] = 0;
+            $response["message"] = "No Event Found";
+
+            // echo no users JSON
+            echo json_encode($response);
+        }
+    }
+
 
 
 }
