@@ -6,4 +6,4 @@ include './functions/GroveApp.php';
 
 $groovapp = new GroveApp();
 
-$getAllUsers = $groovapp->get_event();
+$getAllUsers = $groovapp->get_event_all();
