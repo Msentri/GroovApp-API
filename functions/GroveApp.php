@@ -406,6 +406,8 @@ class GroveApp extends DatabaseManipulation{
                 $place["code"] = $row["code"];
                 $place["intro"] = $row["intro"];
                 $place["image"] = $row["image"];
+                $place["entry_status"] = $row["entry_status"];
+                $place["bottle_offer"] = $row["bottle_offer"];
 
 
                 // push single product into final response array
@@ -489,6 +491,7 @@ class GroveApp extends DatabaseManipulation{
                 $place["event_banner_url"] = $row["event_banner_url"];
                 $place["start_date"] = $row['start_date'];
                 $place["end_date"] = $row['end_date'];
+                $place["place_name"] = $row['place_name'];
 
 
                 // push single product into final response array
